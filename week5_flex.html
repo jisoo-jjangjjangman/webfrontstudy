@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels 💪</title>
+</head>
+<body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap');
+    
+    html {
+      box-sizing: border-box;
+      background: #ffc600;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 20px;
+      font-weight: 200;
+    }
+    
+    body {
+      margin: 0;
+    }
+    
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .panel {
+      background: #6B0F9C;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      /* Safari transitionend event.propertyName === flex */
+      /* Chrome + FF transitionend event.propertyName === flex-grow */
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 20px;
+      background-size: cover;
+      background-position: center;
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+
+    .panel1 { background-image:url(https://t1.daumcdn.net/cfile/blog/99A3A8455D3DA6F224); }
+    .panel2 { background-image:url(https://t1.daumcdn.net/cfile/blog/275A8A445749449B32); }
+    .panel3 { background-image:url(https://t1.daumcdn.net/cfile/blog/2635723B50CC8A1120?original); }
+    .panel4 { background-image:url(https://t1.daumcdn.net/cfile/blog/202B550C4C511F336B?original); }
+    .panel5 { background-image:url(http://jjal.today/data/file/gallery/1028612757_G30dzhCp_fad6c5a8570bafcb75f4735095200bf20257efa8.jpeg); }
+
+    /* Flex Items */
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
+
+    .panel p {
+      text-transform: uppercase;
+      font-family: 'Nanum Gothic', sans-serif;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+
+
+    
+    .panel p:nth-child(2) {
+      font-size: 3em;
+      font-family: 'Black Han Sans', sans-serif;
+    }
+
+    .panel.open {
+      flex: 5;
+      font-size: 50px;
+    }
+    
+    @media only screen and (max-width: 500px) {
+      .panel p {
+        font-size: 1em;
+      }
+    }
+  </style>
+
+
+  <div class="panels">
+    <div class="panel panel1">
+      <p>매력적인</p>
+      <p>뱁새</p>
+      <p>귀엽져</p>
+    </div>
+    <div class="panel panel2">
+      <p>강원도의 자랑</p>
+      <p>감자</p>
+      <p>줄여서 강자</p>
+    </div>
+    <div class="panel panel3">
+      <p>영덕의 자랑</p>
+      <p>대게</p>
+      <p>대게대게 맛있어</p>
+    </div>
+    <div class="panel panel4">
+      <p>취업</p>
+      <p>과자</p>
+      <p>영업</p>
+    </div>
+    <div class="panel panel5">
+      <p>내뜻대로안돼</p>
+      <p>에휴</p>
+      <p>넘모슬퍼</p>
+    </div>
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll('.panel');
+
+
+    function clickPanel(e) {
+      e.classList.toggle('open');
+      const already = document.querySelectorAll('.open-active');
+      already.forEach(function(already){
+        });
+    }
+
+    function toggleActive(e) {
+      console.log(e.propertyName);
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('click', clickPanel));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  </script>
+
+</body>
+</html>
