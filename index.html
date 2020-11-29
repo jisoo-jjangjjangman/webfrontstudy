@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>나만의 액자 만들깅★ 찡긋!</title>
+  <link href="./style.css" rel="stylesheet">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <h2>나만의<span class='hl'> 액자 </span>만들기</h2>
+  <h3>정말 기대되지 않나요? 핫핫~</h3>
+
+  <div class="controls">
+    <label for="spacing">크기</label>
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">블러</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">액자색</label>
+    <input id="base" type="color" name="base" value="#3f72af">
+
+    <button id="jsSave">저장</button>
+    
+    <input type="file" id="upImgFile" accept="image/*">
+
+  </div>
+  <img id="thumbnailImg" src="">
+</body>
+</html>

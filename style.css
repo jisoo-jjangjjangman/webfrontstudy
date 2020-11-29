@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+:root {
+  --base: #3f72af;
+  --spacing: 10px;
+  --blur: 10px;
+}
+
+img {
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+  max-height: 800px;
+}
+
+.hl {
+  font-family: 'Jua', sans-serif;
+  color: var(--base);
+}
+
+h2 {
+  font-family: 'Jua', sans-serif;
+  margin-bottom: 20px;
+  color: #112d4e;
+}
+
+h3 {
+  font-family: 'Jua', sans-serif;
+  font-size: 30px;
+  filter: blur(var(--blur));
+}
+
+/*
+  misc styles, nothing to do with CSS variables
+*/
+
+body {
+  text-align: center;
+  background: #f9f7f7;
+  color: #112d4e;
+  font-family: 'Jua', sans-serif;
+  font-weight: 100;
+  font-size: 50px;
+}
+
+label {
+  font-size: 30px;
+}
+
+.controls {
+  margin-bottom: 50px;
+}
+
+input {
+  width: 100px;
+}

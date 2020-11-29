@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>나만의 액자 만들깅★ 찡긋!</title>
+</head>
+<body>
+  <h2>나만의<span class='hl'> 액자 </span>만들기</h2>
+  <h3>정말 기대되지 않나요? 핫핫~</h3>
+
+  <div class="controls">
+    <label for="spacing">크기</label>
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+    <label for="blur">블러</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">액자색</label>
+    <input id="base" type="color" name="base" value="#3f72af">
+
+    <button id="jsSave">저장</button>
+    <input type="file" id="upImgFile" onChange="uploadImgPreview();" accept="image/*">
+
+  </div>
+  <img id="thumbnailImg" src="">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+    :root {
+      --base: #3f72af;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+      max-height: 800px;
+    }
+
+    .hl {
+      font-family: 'Jua', sans-serif;
+      color: var(--base);
+    }
+
+    h2 {
+      font-family: 'Jua', sans-serif;
+      margin-bottom: 20px;
+      color: #112d4e;
+    }
+
+    h3 {
+      font-family: 'Jua', sans-serif;
+      font-size: 30px;
+      filter: blur(var(--blur));
+    }
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+      background: #f9f7f7;
+      color: #112d4e;
+      font-family: 'Jua', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    label {
+      font-size: 30px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width: 100px;
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('.controls input');
+    const saveButton = document.getElementById("jsSave");
+
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    // 이미지 업로드기능 기능 
+
+    function uploadImgPreview() {
+      let fileInfo = document.getElementById("upImgFile").files[0];
+      let reader = new FileReader();
+
+      reader.onload = function() {
+        document.getElementById("thumbnailImg").src = reader.result;
+        };
+
+      if( fileInfo ) {
+        reader.readAsDataURL( fileInfo );
+        }
+    }
+
+    // 이미지 다운로드 기능 (미완성)
+
+    function SaveClick() {
+      alert('앗! 아직 구현중입니다! ^ㅁ^')
+      const link = 
+      link.href = image;
+      link.download = "potato";
+      link.click();
+    }
+
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+    if (saveButton) {
+    saveButton.addEventListener("click", SaveClick);
+    }
+  </script>
+
+
+</body>
+</html>
